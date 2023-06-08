@@ -34,8 +34,10 @@ def predict_result_lung(img):
         return "Benign"
     elif models.predict(img)[0][1] > 0.5:
         return  "Malignant"
-    elif models.predict(img)[0][2] > 0.8:
+    elif models.predict(img)[0][2] > 0.5:
         return "normal"
+    else :
+        return "CT-Scan Tidak Dapat di Prediksi"
 
 
 app = Flask(__name__)
