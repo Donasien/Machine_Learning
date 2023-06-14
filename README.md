@@ -1,3 +1,16 @@
+<p align='center'>
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />        
+  </a>&nbsp;&nbsp;
+  <a href="https://flask.palletsprojects.com/en/2.0.x/">
+    <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />        
+  </a>&nbsp;&nbsp;
+  <a href="https://www.tensorflow.org/">
+    <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
+  </a>&nbsp;&nbsp;
+</p>
+<br>
+
 ## Bangkit Capstone Project 2023
 Bangkit Capstone Team ID : C23-PS011 <br>
 Here is our repository for Bangkit 2023 Capstone project - Machine Learning
