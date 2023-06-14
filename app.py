@@ -8,6 +8,17 @@ import tensorflow as tf
 from PIL import Image
 from flask import Flask, jsonify, request
 
+import pymysql
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+db_user = os.getenv('DB_USERNAME')
+db_password = os.getenv('DB_PASSWORD')
+db_name = os.getenv('DB_NAME')
+host = os.getenv('DB_HOST')
+
 model = tf.keras.models.load_model('models/1')
 models = tf.keras.models.load_model('modelss/1')
 
@@ -35,17 +46,44 @@ def predict_result_lung(imgs):
     elif models.predict(imgs)[0][1] > 0.5:
         return  "Malignant"
     elif models.predict(imgs)[0][2] > 0.5:
-        return "normal"
+        return "Normal"
     else :
         return "CT-Scan Tidak Dapat di Prediksi"
 
 
 app = Flask(__name__)
 
-@app.route('/predict_disease', methods=['POST'])
+@app.route('/predict-disease', methods=['POST'])
 def infer_image():
+    if 'token' not in request.form:
+        js = {
+            "message": "Token Required",
+        }
+
+        return jsonify(js)
+
     if 'file' not in request.files:
-        return "Please try again. The Image doesn't exist"
+        js = {
+            "message": "Image Required",
+        }
+
+        return jsonify(js)
+    
+    token = request.form.get('token')
+
+    cnx = pymysql.connect(user=db_user, password=db_password, host=host, db=db_name)
+    
+    with cnx.cursor() as cursor:
+        cursor.execute("select * from users where token='"+token+"';")
+        result = cursor.fetchall()
+    cnx.close()
+
+    if not result:
+        js = {
+            "message": "Token Not Found",
+        }
+
+        return jsonify(js)
     
     file = request.files.get('file')
 
@@ -56,29 +94,17 @@ def infer_image():
     img = prepare_image(img_bytes)
     imgs = prepare_images(img_bytes)
 
-    return jsonify(prediction=predict_result_alzheimer(img)),jsonify(prediction=predict_result_lung(imgs))
+    js = {
+            "prediction_alzheimer": predict_result_alzheimer(img),
+            "prediction_lung": predict_result_lung(imgs),
+        }
 
-
-# @app.route('/lung', methods=['POST'])
-# def infer_images():
-#     if 'file' not in request.files:
-#         return "Please try again. The Image doesn't exist"
-    
-#     file = request.files.get('file')
-
-#     if not file:
-#         return
-
-#     img_bytes = file.read()
-#     img = prepare_images(img_bytes)
-
-#     return jsonify(prediction=predict_result_lung(img))
-    
+    return jsonify(js)
 
 @app.route('/', methods=['GET'])
 def index():
-    return 'Machine Learning Inference'
+    return 'Machine Learning Donasien'
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8080, debug=True)
