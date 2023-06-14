@@ -9,7 +9,7 @@
     <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
   </a>&nbsp;&nbsp;
    <a href="https://keras.io/">
-    <img src="https://keras.io/img/logo.png" />
+    <img src="https://img.shields.io/badge/Keras-FF6F00?style=for-the-badge&logo=keras&logoColor=white" />
   </a>&nbsp;&nbsp;
 </p>
 <br>
