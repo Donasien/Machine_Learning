@@ -56,8 +56,7 @@ def infer_image():
     img = prepare_image(img_bytes)
     imgs = prepare_images(img_bytes)
 
-    return jsonify(prediction=predict_result_alzheimer(img))
-    return jsonify(prediction=predict_result_lung(img))
+    return jsonify(prediction=predict_result_alzheimer(img)),jsonify(prediction=predict_result_lung(imgs))
 
 
 # @app.route('/lung', methods=['POST'])
