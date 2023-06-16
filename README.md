@@ -53,7 +53,7 @@ The following tools and technologies are utilized in this project:
 5. Import the required libraries.
 6. Running the flask code that has been created in app.py
 
-   <choose folder> flask run
+   (choose folder) flask run
    
 8. Testing on Postman whether the model was successfully converted into an API.
 
