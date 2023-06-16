@@ -51,8 +51,11 @@ The following tools and technologies are utilized in this project:
 3. create folders to hold Flask files and Machine Learning models
 4. Install ENV in python 
 5. Import the required libraries.
-6. Running the flask code that has been created in app.py 
-7. Testing on Postman whether the model was successfully converted into an API.
+6. Running the flask code that has been created in app.py
+
+   <choose folder> flask run
+   
+8. Testing on Postman whether the model was successfully converted into an API.
 
 ![API ML](https://i.ibb.co/PQWXHKf/Screenshot-79.png)
 
