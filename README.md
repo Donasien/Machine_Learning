@@ -47,15 +47,25 @@ The following tools and technologies are utilized in this project:
 
 ## Deployment And How To Run This Model
 1. Create Model Machine Learning and saved the model
-2. install flask as a framework for creating Machine Learning Model APIs
-3. create folders to hold Flask files and Machine Learning models
-4. Install ENV in python 
-5. Import the required libraries.
-6. Running the flask code that has been created in app.py
+2. Install ENV in python
+    
+  py -m pip install --user virtualenv
+   
+   
+4. create folders to hold Flask files and Machine Learning models
+
+    mkdir (name folder)
+   
+5. install flask as a framework for creating Machine Learning Model APIs
+
+   pip install flask
+
+7. Import the required libraries.
+8. Running the flask code that has been created in app.py
 
    (choose folder) flask run
    
-8. Testing on Postman whether the model was successfully converted into an API.
+9. Testing on Postman whether the model was successfully converted into an API.
 
 ![API ML](https://i.ibb.co/PQWXHKf/Screenshot-79.png)
 
